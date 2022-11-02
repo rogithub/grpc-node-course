@@ -1,0 +1,23 @@
+{
+  "name": "grpc-node-course",
+  "version": "1.0.0",
+  "description": "curse",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogithub/grpc-node-course.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rogithub/grpc-node-course/issues"
+  },
+  "homepage": "https://github.com/rogithub/grpc-node-course#readme",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.7.3",
+    "google-protobuf": "^3.21.2"
+  }
+}
