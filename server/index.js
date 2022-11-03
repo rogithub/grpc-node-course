@@ -1,11 +1,10 @@
-const grpc = require('@grpc/grpc-js');
+const grpc    = require('@grpc/grpc-js');
 const greets  = require('./protos/greet_pb');
 const service = require('./protos/greet_grpc_pb');
 
 /*
   Implements the greet RPC method.
 */
-
 function greet(call, callback) {
     let greeting = new greets.GreetResponse();
     greeting.setResult(`
