@@ -1,7 +1,7 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 'use strict';
-var grpc = require('grpc');
+var grpc = require('@grpc/grpc-js');
 var protos_greet_pb = require('../protos/greet_pb.js');
 
 function serialize_greet_GreetRequest(arg) {
