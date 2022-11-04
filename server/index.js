@@ -1,7 +1,8 @@
 let grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 const address = "127.0.0.1:50051";
-const PROTO_PATH = __dirname +'/../protos/greet.proto';
+const PROTO_PATH = 
+    path.join(__dirname, '..', 'protos', 'greet.proto');
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
     keepCase: true,
