@@ -3,7 +3,7 @@ const greets = require('../server/protos/greet_pb');
 const service = require('../server/protos/greet_grpc_pb');
 const address = "localhost:50051";
 
-function main() {
+function main() {    
     let client = new service.GreetingServiceClient
         (
             address,
@@ -16,8 +16,9 @@ function main() {
     greeting.setLastName("Verde");
 
     req.setGreeting(greeting);
-
+    
     client.greet(req, (err, res) => {
+        console.dir(res);
         if (err) throw err;
 
         console.dir(res.getResult());

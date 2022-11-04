@@ -1,7 +1,7 @@
 let grpc = require('@grpc/grpc-js');
 let greets = require('./protos/greet_pb');
 let service = require('./protos/greet_grpc_pb');
-
+const address = "127.0.0.0:50051";
 
 
 /*
@@ -24,9 +24,7 @@ function main() {
 
     server.addService(service.GreetingServiceService, {
         greet: greet
-    });
-
-    const address = "127.0.0.0:50051";
+    });    
 
     server.bindAsync(
         address,
