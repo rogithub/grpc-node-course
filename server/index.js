@@ -19,9 +19,7 @@ const greet_proto = grpc.loadPackageDefinition(packageDefinition).greet;
 */
 
 function greet(call, callback) {    
-    let result = `
-        Hello ${call.request.greeting.firstName}
-    `;
+    let result = `Hello ${call.request.greeting.firstName}`;
     callback(null, { result: result });
 }
 
