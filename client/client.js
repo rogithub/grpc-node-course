@@ -1,7 +1,7 @@
 const grpc = require('@grpc/grpc-js');
 const greets = require('../server/protos/greet_pb');
 const service = require('../server/protos/greet_grpc_pb');
-const address = "127.0.0.0:50051";
+const address = "localhost:50051";
 
 function main() {
     let client = new service.GreetingServiceClient
