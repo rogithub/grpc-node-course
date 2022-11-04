@@ -1,11 +1,12 @@
 const grpc = require('@grpc/grpc-js');
 const greets = require('../server/protos/greet_pb');
 const service = require('../server/protos/greet_grpc_pb');
+const address = "127.0.0.0:50051";
 
 function main() {
     let client = new service.GreetingServiceClient
         (
-            'localhost:50051',
+            address,
             grpc.credentials.createInsecure()
         );
 
@@ -17,10 +18,7 @@ function main() {
     req.setGreeting(greeting);
 
     client.greet(req, (err, res) => {
-        if (err) {
-            console.error(err);
-            throw err;
-        };
+        if (err) throw err;
 
         console.dir(res.getResult());
     });
