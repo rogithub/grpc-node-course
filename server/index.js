@@ -1,6 +1,6 @@
 let grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
-const address = "127.0.0.0:4500";
+const address = "127.0.0.1:50051";
 const PROTO_PATH = __dirname +'/../protos/greet.proto';
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
@@ -18,12 +18,11 @@ const greet_proto = grpc.loadPackageDefinition(packageDefinition).greet;
   Implements the greet RPC method.
 */
 
-function greet(call) {    
+function greet(call, callback) {    
     let result = `
         Hello ${call.request.greeting.firstName}
     `;
-    call.write({ result: result });
-    call.end();
+    callback(null, { result: result });
 }
 
 
