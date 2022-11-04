@@ -1,4 +1,5 @@
-let grpc = require('@grpc/grpc-js');
+const path = require('path');
+const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 const address = "127.0.0.1:50051";
 const PROTO_PATH = 
@@ -41,7 +42,7 @@ function main() {
 
             server.start();
             console.log("gRPC Server listening on: ");
-            console.log(`${address}`);
+            console.log(`http://${address}`);
         });
 }
 
