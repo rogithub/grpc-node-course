@@ -18,13 +18,12 @@ const greet_proto = grpc.loadPackageDefinition(packageDefinition).greet;
   Implements the greet RPC method.
 */
 
-function greet(call, callback) {
-    let greeting = new greet_proto.GreetResponse();
-    greeting.setResult(`
-        Hello ${call.request.getGreeting().getFirstName()}
-    `);
-
-    callback(null, greeting);
+function greet(call) {    
+    let result = `
+        Hello ${call.request.greeting.firstName}
+    `;
+    call.write({ result: result });
+    call.end();
 }
 
 
