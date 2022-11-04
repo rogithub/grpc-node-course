@@ -18,6 +18,6 @@
   "homepage": "https://github.com/rogithub/grpc-node-course#readme",
   "dependencies": {
     "@grpc/grpc-js": "^1.7.3",
-    "google-protobuf": "^3.21.2"
+    "@grpc/proto-loader": "^0.7.3"
   }
 }

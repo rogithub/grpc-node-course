@@ -1,15 +1,25 @@
 let grpc = require('@grpc/grpc-js');
-let greets = require('./protos/greet_pb');
-let service = require('./protos/greet_grpc_pb');
-const address = "127.0.0.0:50051";
+const protoLoader = require('@grpc/proto-loader');
+const address = "127.0.0.0:4500";
+const PROTO_PATH = __dirname +'/../protos/greet.proto';
 
+const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
+    keepCase: true,
+    longs: String,
+    enums: String,
+    defaults: true,
+    oneofs: true,
+   
+});
+
+const greet_proto = grpc.loadPackageDefinition(packageDefinition).greet;
 
 /*
   Implements the greet RPC method.
 */
 
 function greet(call, callback) {
-    let greeting = new greets.GreetResponse();
+    let greeting = new greet_proto.GreetResponse();
     greeting.setResult(`
         Hello ${call.request.getGreeting().getFirstName()}
     `);
@@ -22,7 +32,7 @@ function main() {
     const server = new grpc.Server();
 
 
-    server.addService(service.GreetingServiceService, {
+    server.addService(greet_proto.GreetSvc.service, {
         greet: greet
     });    
 
