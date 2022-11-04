@@ -1,5 +1,5 @@
-let grpc    = require('@grpc/grpc-js');
-let greets  = require('./protos/greet_pb');
+let grpc = require('@grpc/grpc-js');
+let greets = require('./protos/greet_pb');
 let service = require('./protos/greet_grpc_pb');
 
 
@@ -11,20 +11,20 @@ let service = require('./protos/greet_grpc_pb');
 function greet(call, callback) {
     let greeting = new greets.GreetResponse();
     greeting.setResult(`
-        Hello ${call.request.getGreeting().getFirstname()}
+        Hello ${call.request.getGreeting().getFirstName()}
     `);
 
     callback(null, greeting);
 }
 
 
-function main () {
+function main() {
     const server = new grpc.Server();
-    
-  
+
+
     server.addService(service.GreetingServiceService, {
-	    greet: greet
-    });  
+        greet: greet
+    });
 
     const address = "127.0.0.0:50051";
 
@@ -37,7 +37,7 @@ function main () {
             server.start();
             console.log("gRPC Server listening on: ");
             console.log(`${address}`);
-        });    
+        });
 }
 
 main();
